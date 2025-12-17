@@ -6,9 +6,21 @@ namespace mvc_bangun_datar.Controllers
 {
     public class BangunDatarController : Controller
     {
-        public IActionResult Persegi(double sisi)
+        // 1️⃣ GET: tampilkan form
+        public IActionResult Index()
         {
-            var persegi = new Persegi { Sisi = sisi };
+            return View();
+        }
+
+        // 2️⃣ POST: terima data dari form
+        [HttpPost]
+        public IActionResult HitungPersegi(InputBangunDatarViewModel input)
+        {
+            
+            var persegi = new Persegi
+            {
+                Sisi = input.Sisi
+            };
 
             var vm = new BangunDatarViewModel
             {
@@ -16,20 +28,7 @@ namespace mvc_bangun_datar.Controllers
                 Luas = persegi.HitungLuas()
             };
 
-            return View(vm);
-        }
-
-        public IActionResult Lingkaran(double r)
-        {
-            var lingkaran = new Lingkaran { JariJari = r };
-
-            var vm = new BangunDatarViewModel
-            {
-                NamaBangun = "Lingkaran",
-                Luas = lingkaran.HitungLuas()
-            };
-
-            return View(vm);
+            return View("Hasil", vm);
         }
     }
 }

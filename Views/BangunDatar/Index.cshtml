@@ -1,0 +1,10 @@
+@model mvc_bangun_datar.ViewModels.InputBangunDatarViewModel
+
+<h2>Hitung Luas Persegi</h2>
+
+<form asp-action="HitungPersegi" method="post">
+    <label>Sisi:</label>
+    <input asp-for="Sisi" type="number" step="any" />
+    <br /><br />
+    <button type="submit">Hitung</button>
+</form>
