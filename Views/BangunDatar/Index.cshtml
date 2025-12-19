@@ -1,10 +1,51 @@
 @model mvc_bangun_datar.ViewModels.InputBangunDatarViewModel
 
-<h2>Hitung Luas Persegi</h2>
+@{
+    ViewData["Title"] = "Hitung Luas Bangun Datar";
+}
 
-<form asp-action="HitungPersegi" method="post">
-    <label>Sisi:</label>
-    <input asp-for="Sisi" type="number" step="any" />
-    <br /><br />
+<h2>Hitung Luas Bangun Datar</h2>
+
+<form asp-action="Hitung" method="post">
+    <div>
+        <label>Jenis Bangun</label>
+        <select asp-for="JenisBangun" id="jenisBangun">
+            <option value="">-- Pilih --</option>
+            <option value="Persegi">Persegi</option>
+            <option value="Lingkarang">Lingkaran</option>
+        </select>
+    </div>
+
+
+    <div id="persegiField" style="display:none">
+        <label>Sisi</label>
+        <input asp-for="Sisi" />
+    </div>
+
+    <div id="lingkaranField" style="display:none">
+        <label>Jari-jari</label>
+        <input asp-for="JariJari" />
+    </div>
+
+    <br />
     <button type="submit">Hitung</button>
 </form>
+
+@section Scripts {
+<script>
+    const jenis = document.getElementById("jenisBangun");
+    const persegi = document.getElementById("persegiField");
+    const lingkaran = document.getElementById("lingkaranField");
+
+    jenis.addEventListener("change", function () {
+        persegi.style.display = "none";
+        lingkaran.style.display = "none";
+
+        if (this.value === "Persegi") {
+            persegi.style.display = "block";
+        } else if (this.value === "Lingkaran") {
+            lingkaran.style.display = "block";
+        }
+    });
+</script>
+}

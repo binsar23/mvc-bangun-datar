@@ -1,6 +1,15 @@
-@model mvc_bangun_datar.ViewModels.BangunDatarViewModel
+@{
+    ViewData["Title"] = "Hasil Perhitungan";
+}
 
-<h2>@Model.NamaBangun</h2>
-<p>Luas: <strong>@Model.Luas</strong></p>
+<h2>Hasil</h2>
 
-<a asp-action="Index">Hitung lagi</a>
+<p>
+    Bangun Datar: <strong>@ViewBag.Nama</strong>
+</p>
+
+<p>
+    Luas: <strong>@ViewBag.Luas</strong>
+</p>
+
+<a asp-action="Index">Hitung Lagi</a>
